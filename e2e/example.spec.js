@@ -1,5 +1,6 @@
 // @ts-check
 import {test, expect} from "@playwright/test";
+import {getByRole} from "@testing-library/react";
 
 test("has title", async ({page}) => {
   await page.goto("https://playwright.dev/");
@@ -28,7 +29,23 @@ test("copyright", async ({page}) => {
 test("logo quantity", async ({page}) => {
   await page.goto("https://playwright.dev/");
 
-  const logolist = await page.locator('ul[class^="logosList_!"]');
+  const logolist = await page.locator('ul[class^="logosList_"]');
   const listitem = await logolist.locator("li");
   await expect(listitem).toHaveCount(9);
+});
+
+test("text h2", async ({page}) => {
+  await page.goto("https://playwright.dev/docs/intro");
+
+  const text = await page.locator("h2#installing-playwright");
+  await expect(text).toHaveText("Installing Playwright");
+});
+
+test("navigate", async ({page}) => {
+  await page.goto("https://playwright.dev/");
+
+  await page.getByRole("link", {name: "Docs"}).click();
+
+  const text = await page.locator("h2#installing-playwright");
+  await expect(text).toHaveText("Installing Playwright");
 });
