@@ -17,3 +17,18 @@ test("get started link", async ({page}) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole("heading", {name: "Installation"})).toBeVisible();
 });
+
+test("copyright", async ({page}) => {
+  await page.goto("https://playwright.dev/");
+
+  const copyrightDiv = await page.locator("div.footer__copyright");
+  await expect(copyrightDiv).toHaveText(/Copyright © 2025 Microsoft/);
+});
+
+test("logo quantity", async ({page}) => {
+  await page.goto("https://playwright.dev/");
+
+  const logolist = await page.locator('ul[class^="logosList_!"]');
+  const listitem = await logolist.locator("li");
+  await expect(listitem).toHaveCount(9);
+});

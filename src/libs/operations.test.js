@@ -15,7 +15,21 @@ describe("sottrazione", () => {
     expect(sottrazione(2, 1)).toBe(1);
   });
   it("sottrazione 2 - 0 to equal 2", () => {
-    expect(sum(2, 0)).toBe(2);
+    expect(sottrazione(2, 0)).toBe(2);
   });
 });
 
+describe("moltiplicazione", () => {
+  it("", () => {
+    expect(moltiplicazione(2, 1)).toBe(2);
+  });
+  it("", () => {
+    expect(moltiplicazione(2, 0)).toBe(0);
+  });
+});
+
+describe("divisione", () => {
+  it("", () => {
+    expect(divisione(2, 1)).toBe(2);
+  });
+});
